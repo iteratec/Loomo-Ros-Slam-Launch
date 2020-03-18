@@ -1,0 +1,12 @@
+<launch>
+<!--start the master if not already started-->
+  <master auto="start"/>
+  <!-- we cant use simtime to synchronize messages?-->
+  <param name="/use_sim_time" value="false"/>
+
+  <!-- load the vizualisation-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find loomo_laser)/src/config/single_robot.rviz" />
+
+  <!-- the file to start the laser filters
+  <include file="$(find loomo_laser)/src/launch/laser_filter.launch"/> -->
+</launch>

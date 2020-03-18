@@ -1,0 +1,16 @@
+<launch>
+<!--start the master if not already started-->
+  <master auto="start"/>
+  <!-- we cant use simtime to synchronize messages?-->
+  <param name="/use_sim_time" value="false"/>
+
+
+  <!--the file to start the gmapping node and load the according param files-->
+  <include file="$(find loomo_laser)/src/config/slam_gmapping.xml"/>
+
+  <!-- load the vizualisation-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find loomo_laser)/src/config/slam_single_robot.rviz" />
+
+  <!-- the file to start the laser filters
+  <include file="$(find loomo_laser)/src/launch/laser_filter.launch"/>-->
+</launch>

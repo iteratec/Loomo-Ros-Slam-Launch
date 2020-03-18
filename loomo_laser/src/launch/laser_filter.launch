@@ -1,0 +1,13 @@
+<launch>
+
+<node pkg="tf" type="static_transform_publisher" name="laser_transformer" args="0.20 0.0 0.20 -1.57079632679 0 0 base_center_wheel_axis_frame laser 100" /> 
+
+<node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter_filtered">
+
+      <rosparam command="load" file="$(find loomo_laser)/src/config/laser_filter.yaml" />
+</node>
+<node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter_clearing">
+		<remap from="scan_filtered" to="scan_clearing"/>
+      <rosparam command="load" file="$(find loomo_laser)/src/config/laser_filter_clearing.yaml" />
+</node> 
+</launch>

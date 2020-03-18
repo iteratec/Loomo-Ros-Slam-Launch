@@ -1,0 +1,32 @@
+<launch>
+	<!--start the move_base node-->
+  
+  <!--start the slam_gmapping node-->
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+  	<!-- minimal param setup-->
+  	<!-- remap the scan topic to the according topic-->
+  	<remap from="scan" to="scan_filtered"/>
+  	<!-- set the name of the base frame of the robot-->
+  	<param name="base_frame" value="base_center_wheel_axis_frame"/>
+  	<!-- set the resolution of the map. According to the laser scanner. this may have to be set accordingly in the local costmap yaml
+  	Because of the low resolution of our scanner we set it at ~10cm/pix. The manual states its resolution is 1% of its max range.
+  	default:0.05-->
+  	<param name="delta" value="0.08"/>
+  	<!-- wiki: The maximum range of the sensor. If regions with no obstacles within the range of the sensor should appear as free space in the map, set maxUrange < maximum range of the real sensor <= maxRange.-->
+  	<param name="maxRange" value="12.0"/>
+  	<!-- therefore we set Urange <maxRange-->
+  	<param name="maxUrange" value="7.0"/>
+  	<!--The optimization step in translation-->
+  	<param name="lstep" value="0.01"/>
+  	  	<!--The optimization step in rotation-->
+  	<param name="astemp" value="0.01"/>
+  	<!--The number of iterations of the scanmatcher-->
+  	<param name="iterations" value="3"/>
+  	<!-- odometry error values set them lower becaus robot was jumping-->
+  	<param name="srr" value="0.01"/>
+	<param name="srt" value="0.01"/>
+	<param name="str" value="0.01"/>
+	<param name="stt" value="0.01"/>
+  </node>
+
+</launch>
