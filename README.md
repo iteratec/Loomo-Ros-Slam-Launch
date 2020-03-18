@@ -16,4 +16,4 @@ This project belongs to the Rosjava Loomo App found here:
 https://github.com/iteratec/Loomo-Ros-App
 ```
 It consists of the files necessary to perform SLAM with a laserscanner, found in the loomo_laser folder.
-For instructions on how to use these files please refere to the Rosjava Loomo App project.
+For instructions on how to use these files please refer to the Rosjava Loomo App project.
