@@ -5,7 +5,7 @@
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
   	<!-- minimal param setup-->
   	<!-- remap the scan topic to the according topic-->
-  	<remap from="scan" to="scan_filtered"/>
+  	<remap from="scan" to="scan_for_amcl"/>
   	<!-- set the name of the base frame of the robot-->
   	<param name="base_frame" value="base_center_wheel_axis_frame"/>
   	<!-- set the resolution of the map. According to the laser scanner. this may have to be set accordingly in the local costmap yaml
